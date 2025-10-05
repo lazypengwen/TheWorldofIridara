@@ -298,7 +298,8 @@ body {
         justify-content: flex-end;
         z-index: 2;
         pointer-events: none;
-        padding-bottom: 70px;
+        padding-bottom: 120px;
+        padding-top: 150px;
     }
 
     #main-character-img {
@@ -307,7 +308,7 @@ body {
         left: 50%;
         right: unset;
         transform: none;
-        height: 70%;
+        height: 100%;
         width: 100%;
         object-fit: contain;
         opacity: 1;
@@ -320,7 +321,7 @@ body {
         right: unset;
         font-size: 1.2em;
         margin-top: 10px;
-        margin-bottom: 20px;
+        margin-bottom: 0px;
         padding: 0 15px;
         max-width: 90%;
         text-shadow: 0 0 5px rgba(0, 0, 0, 1);
