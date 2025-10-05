@@ -121,7 +121,6 @@ body {
 
 /* --- Visual Panel (Image and Quote) --- */
 .visual-panel {
-    /* Grid is used for positioning the content panel relative to the image on desktop */
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     display: flex;
@@ -135,7 +134,7 @@ body {
 #character-quote {
     position: absolute;
     bottom: 30%;
-    right: 450px; /* Positioned relative to the content panel on desktop */
+    right: 450px;
     font-size: 1.8em;
     font-style: italic;
     font-weight: 600;
@@ -144,11 +143,11 @@ body {
     text-align: center;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
     letter-spacing: 1px;
-    max-width: 300px; /* Constraint for quote length */
+    max-width: 300px;
 }
 
 #main-character-img {
-    position: fixed; /* Fixed on desktop to hang off the right side */
+    position: fixed;
     right: 0;
     top: 0;
     height: 95%;
@@ -165,7 +164,7 @@ body {
     position: absolute;
     bottom: 0; 
     right: 0; 
-    left: 200px; /* Starts after sidebar on desktop */
+    left: 200px;
     width: calc(100% - 200px);
     display: flex;
     justify-content: center;
@@ -174,11 +173,11 @@ body {
     z-index: 5;
     border-top: 0px solid rgba(255, 255, 255, 0.1); 
     border-bottom-right-radius: 8px;
-    overflow-x: auto; /* Allow horizontal scrolling for icons */
+    overflow-x: auto;
 }
 
 .char-icon-wrapper {
-    flex-shrink: 0; /* Important for preventing squishing in mobile scroll */
+    flex-shrink: 0;
     text-align: center;
     margin: 0 10px;
     padding: 5px;
@@ -211,19 +210,16 @@ body {
     color: #fff;
 }
 
-/* ==================================== */
 /* MOBILE OPTIMIZATION         */
-/* ==================================== */
+
 @media (max-width: 768px) {
-    /* Make container full screen */
     .character-screen-container {
         width: 100vw;
         height: 100vh;
         max-width: unset;
         max-height: unset;
-        /* Redefine grid for mobile: sidebar on top, content below */
         grid-template-columns: 1fr; 
-        grid-template-rows: auto 1fr auto; /* Sidebar, Content+Image, Character Bar */
+        grid-template-rows: auto 1fr auto;
     }
     
     .background-overlay {
@@ -234,15 +230,15 @@ body {
     /* --- Sidebar (Now Top Nav) --- */
     .sidebar-nav {
         grid-column: 1 / 2;
-        grid-row: 1 / 2; /* Move to the top row */
+        grid-row: 1 / 2;
         padding: 10px;
-        background: rgba(0, 0, 0, 0.8); /* Darker background for visibility */
-        overflow-x: auto; /* Allow horizontal scrolling for the book list */
+        background: rgba(0, 0, 0, 0.8);
+        overflow-x: auto;
         white-space: nowrap;
     }
 
     .sidebar-nav ul {
-        display: flex; /* Arrange list items horizontally */
+        display: flex;
         padding-left: 0;
     }
 
@@ -250,9 +246,9 @@ body {
         font-size: 0.9em;
         padding: 5px 10px;
         margin-bottom: 0;
-        margin-right: 5px; /* Spacing between items */
-        border-left: none; /* Remove left border */
-        border-bottom: 3px solid transparent; /* Use bottom border for active state */
+        margin-right: 5px; 
+        border-left: none;
+        border-bottom: 3px solid transparent;
         display: inline-block;
     }
     
@@ -267,9 +263,9 @@ body {
         grid-column: 1 / 2;
         grid-row: 2 / 3;
         padding: 15px;
-        max-width: unset; /* Use full width */
-        background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%); /* Fading background to help text visibility over image */
-        z-index: 3; /* Keep content over the image */
+        max-width: unset;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+        z-index: 3;
     }
 
     #character-name {
@@ -285,33 +281,33 @@ body {
     .description {
         font-size: 0.9em;
         padding: 10px;
-        flex-grow: 1; /* Allow description to take available height */
-        max-height: 150px; /* Constraint description height */
-        overflow-y: auto; /* Make description scrollable */
+        flex-grow: 1;
+        max-height: 150px;
+        overflow-y: auto;
     }
 
     /* --- Visual Panel (Background Image) --- */
     .visual-panel {
         grid-column: 1 / 2;
-        grid-row: 2 / 3; /* Same grid cell as content panel to layer them */
+        grid-row: 2 / 3;
         align-items: center;
         justify-content: center;
         pointer-events: none;
     }
 
     #main-character-img {
-        position: absolute; /* Change from fixed to absolute within its grid cell */
+        position: absolute;
         top: 50%;
         left: 50%;
         right: unset;
-        transform: translate(-50%, -50%); /* Center the image */
-        height: 70%; /* Smaller height */
+        transform: translate(-50%, -50%);
+        height: 70%;
         width: 100%;
-        opacity: 0.6; /* Make image transparent to help text visibility */
+        opacity: 0.6;
     }
 
     #character-quote {
-        position: relative; /* Change from absolute to relative */
+        position: relative;
         bottom: unset;
         right: unset;
         font-size: 1.2em;
@@ -325,14 +321,14 @@ body {
     /* --- Character Selection Bar (Bottom) --- */
     .character-selection-bar {
         grid-column: 1 / 2;
-        grid-row: 3 / 4; /* Move to the bottom row */
+        grid-row: 3 / 4;
         left: 0;
         width: 100%;
         padding: 10px 0;
         background: rgba(0, 0, 0, 0.8);
         border-bottom-right-radius: 0;
-        overflow-x: scroll; /* Ensure scroll works on mobile */
-        justify-content: flex-start; /* Align icons to the start */
+        overflow-x: scroll;
+        justify-content: flex-start;
     }
     
     .char-icon-wrapper {
@@ -343,4 +339,5 @@ body {
         width: 50px;
         height: 50px;
     }
+
 }
