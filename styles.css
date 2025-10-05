@@ -32,12 +32,14 @@ body {
     position: relative;
     overflow: hidden;
     
-    /* Default Desktop Grid Layout */
+    gap: 0;
+    border-radius: 8px;
+}
+
+.character-screen-container:not(.hidden) {
     display: grid;
     grid-template-columns: 200px 1fr;
     grid-template-rows: 1fr auto;
-    gap: 0;
-    border-radius: 8px;
 }
 
 .background-overlay {
@@ -210,6 +212,81 @@ body {
     color: #fff;
 }
 
+/* --- Start Screen Styles (NEW) --- */
+#start-screen {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 1s ease-in-out; 
+}
+
+.hidden {
+    display: none !important;
+}
+
+.fading-out {
+    opacity: 0 !important;
+}
+
+.start-box-overlay {
+    width: 90vw;
+    height: 90vh;
+    max-width: 700px; 
+    max-height: 450px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.start-box-overlay h1 {
+    font-family: 'Times New Roman', serif; /* Simulating the font style from the image */
+    font-size: 5em;
+    font-weight: normal;
+    color: #fff;
+    margin-bottom: 30px;
+    line-height: 1.1;
+    text-shadow: 0 0 15px rgba(255, 204, 102, 0.5);
+}
+
+#start-button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #fff;
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#start-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: #ffcc66;
+    color: #ffcc66;
+}
+
+/* FIX: Utility class to hide elements completely */
+.hidden {
+    display: none !important;
+}
+
+
 /* MOBILE OPTIMIZATION         */
 
 @media (max-width: 768px) {
@@ -218,6 +295,10 @@ body {
         height: 100vh;
         max-width: unset;
         max-height: unset;
+        /* FIX: Grid properties applied conditionally */
+    }
+    
+    .character-screen-container:not(.hidden) {
         grid-template-columns: 1fr; 
         grid-template-rows: auto 1fr auto;
     }
