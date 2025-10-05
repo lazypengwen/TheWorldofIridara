@@ -1,4 +1,4 @@
-r@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 
 * {
@@ -307,7 +307,7 @@ body {
         width: 100%;
         object-fit: contain;
         opacity: 1;
-        z-index: 2;
+        z-index: 1;
     }
 
     #character-quote {
@@ -332,7 +332,6 @@ body {
         left: 0;
         width: 100%;
         padding: 10px 0;
-        background: rgba(0, 0, 0, 0.8);
         border-bottom-right-radius: 0;
         overflow-x: auto;
         justify-content: flex-start;
@@ -380,5 +379,4 @@ body {
     }
 
 }
-
 
