@@ -1,17 +1,19 @@
-// --- DOM Element References ---
 const sidebarItems = document.querySelectorAll('.sidebar-nav .nav-item');
 const charBar = document.getElementById('character-selection-bar');
 const mainImage = document.getElementById('main-character-img');
 const charName = document.getElementById('character-name');
-const vcName = document.getElementById('vc-name'); // Correct variable name is vcName
+const vcName = document.getElementById('vc-name'); 
 const charDescription = document.getElementById('character-description');
 const charQuote = document.getElementById('character-quote'); 
+const startScreen = document.getElementById('start-screen'); 
+const startButton = document.getElementById('start-button');
+const appContainer = document.getElementById('app-container');
 
 
 // --- Global State ---
 let bookIndex = {};
 let characterCache = {};
-let currentbook = "TMGD"; // FIX 1: Define the default book ID to avoid ReferenceError
+let currentbook = "TMGD"; 
 
 async function loadCharacterIndex() {
     try {
@@ -23,12 +25,14 @@ async function loadCharacterIndex() {
         
         bookIndex = await response.json();
         console.log("Book index loaded successfully.");
-        initializeApp(); 
+        // FIX: Setup the start button listener after data is loaded
+        setupStartScreen(); 
 
     } catch (error) {
         console.error("Could not load book index:", error);
-        // Added padding to make the error visible
         charBar.innerHTML = `<p style="color:red; opacity:0.8; padding: 15px;">Error: Could not load book index data. (Check JSON contents or console for details)</p>`;
+        // Allow the user to proceed even on error, but the app will be blank
+        setupStartScreen();
     }
 }
 
@@ -91,7 +95,7 @@ function loadbook(bookId) {
         sidebarItems.forEach(item => item.classList.remove('active'));
         document.querySelector(`.nav-item[data-book="${bookId}"]`).classList.add('active');
         charName.textContent = '';
-        vcName.textContent = ''; // FIX 2: Changed vaName to vcName
+        vcName.textContent = ''; 
         charDescription.textContent = '';
         charQuote.textContent = '';
         mainImage.src = '';
@@ -134,6 +138,7 @@ function switchCharacterUI(charId, data) {
 }
 
 function initializeApp() {
+    appContainer.classList.add('visible');
     loadbook(currentbook);
     
     sidebarItems.forEach(item => {
@@ -147,5 +152,21 @@ function initializeApp() {
     });
 }
 
+function setupStartScreen() {
+    if (startButton) {
+        startButton.addEventListener('click', () => {
+            startScreen.classList.add('fading-out');
+            appContainer.classList.remove('hidden');
+            initializeApp();
+            setTimeout(() => {
+                startScreen.classList.add('hidden');
+                startScreen.classList.remove('fading-out');
+            }, 1000); 
+        });
+    } else {
+        console.error("Start button not found. Initialization failed.");
+    }
+}
 
-window.onload = loadCharacterIndex; // FIX 3: Removed the extra closing brace here
+
+window.onload = loadCharacterIndex; 
