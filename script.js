@@ -67,7 +67,7 @@ function createCharacterIcon(charId, bookId) {
     wrapper.classList.add('char-icon-wrapper');
     wrapper.setAttribute('data-char', charId);
 
-    const iconPath = `data/${bookId}/${charId}.png`;
+    const iconPath = `data/${bookId}/icon_${charId}.png`;
 
     const icon = document.createElement('img');
     icon.classList.add('char-icon');
