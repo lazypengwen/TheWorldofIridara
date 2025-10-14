@@ -150,9 +150,9 @@ body {
 
 #main-character-img {
     position: fixed;
-    right: 0;
-    top: 0;
-    height: 95%;
+    right: -2;
+    top: -1;
+    height: 80%;
     object-fit: contain;
     transform: translateX(50px);
     pointer-events: none;
@@ -212,7 +212,7 @@ body {
     color: #fff;
 }
 
-/* --- Start Screen Styles --- */
+/* --- Start Screen Styles (NEW) --- */
 #start-screen {
     position: absolute; 
     top: 0;
@@ -251,7 +251,7 @@ body {
 }
 
 .start-box-overlay h1 {
-    font-family: 'Times New Roman', serif;
+    font-family: 'Times New Roman', serif; /* Simulating the font style from the image */
     font-size: 5em;
     font-weight: normal;
     color: #fff;
@@ -281,12 +281,13 @@ body {
     color: #ffcc66;
 }
 
+/* FIX: Utility class to hide elements completely */
 .hidden {
     display: none !important;
 }
 
 
-/* --- MOBILE OPTIMIZATION  --- */
+/* MOBILE OPTIMIZATION         */
 
 @media (max-width: 768px) {
 
@@ -296,7 +297,6 @@ body {
         max-width: 100%;
         max-height: 100%;
         border-radius: 0;
-  /* ---background: rgba(0, 0, 0, 0);  --- */
     }
 
     .start-box-overlay h1 {
@@ -315,6 +315,7 @@ body {
         height: 100vh;
         max-width: unset;
         max-height: unset;
+        /* FIX: Grid properties applied conditionally */
     }
     
     .character-screen-container:not(.hidden) {
@@ -487,6 +488,3 @@ body {
     }
 
 }
-
-
-
