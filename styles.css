@@ -151,7 +151,7 @@ body {
 #main-character-img {
     position: fixed;
     right: -2;
-    top: 0;
+    top: -1;
     height: 80%;
     object-fit: contain;
     transform: translateX(50px);
@@ -488,4 +488,5 @@ body {
     }
 
 }
+
 
